@@ -3,9 +3,9 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { NavLink } from 'react-router-dom'
 import { getCoins, search, viewMore } from '../store/feature/CoinSlicer'
-import CoinsRow from './CoinsRow'
-import HeaderRow from './HeaderRow'
-import Loader from './Loader'
+import CoinsRow from './pieces/CoinsRow'
+import HeaderRow from './pieces/HeaderRow'
+import Loader from './pieces/Loader'
 
 const CoinCard = () => {
 

@@ -3,10 +3,12 @@ import React, { useEffect, useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
 import { getEachCoin } from '../store/feature/CoinSlicer';
-import InfoCard from './InfoCard';
-import Loader from './Loader';
-import PriceShow from './PriceShow';
-import {BiTransferAlt} from 'react-icons/bi'
+import Loader from './pieces/Loader';
+import Description from './pieces/Description';
+import EachCoinHeader from './pieces/EachCoinHeader';
+import EachCoinPriceShow from './pieces/EachCoinPriceShow';
+import EachCoinInfo from './pieces/EachCoinInfo';
+import ExchangeForm from './pieces/ExchangeForm';
 
 const EachCoin = () => {
 
@@ -65,7 +67,6 @@ const EachCoin = () => {
       setToWhat(e.target.value)
     }
 
-
     useEffect(() => {
       setLoad(true)
       axios.get(url)
@@ -93,12 +94,6 @@ const EachCoin = () => {
 
     })
     
-
-
-
-
-
-
   return (
     <>
     {
@@ -107,83 +102,29 @@ const EachCoin = () => {
         <Loader/>
       </div>
       : 
-      <div className='text-white text-[13px] py-[30px]'>
+    <div className='text-white text-[13px] py-[30px]'>
 
-      <div className='w-full flex flex-col justify-center items-center'>
+    <div className='w-full flex flex-col justify-center items-center'>
 
       <Link to='/' className='px-[15px] mb-[20px] py-[10px] bg-[#1B2730] shadow-xl flex justify-center w-fit rounded-[6px]'>Back Home</Link>
 
+      <div className='w-[80%] bg-[#1B2730] rounded-[6px] px-[20px] py-[40px] text-white'>
 
-        <div className='w-[80%] bg-[#1B2730] rounded-[6px] px-[20px] py-[40px] text-white'>
+            <EachCoinHeader img={coin?.image?.large} name={coin?.id} symbol={coin?.symbol} rank={coin.market_cap_rank} />
 
-            <div className='w-full flex justify-around'>
-              <div className='flex items-center space-x-[30px]'>
-                <img src={coin?.image?.large} className='w-[80px] h-[80px]' alt="" />
-                <div>
-                <h1 className='text-[20px] font-[600] tracking-widest'>{coin.symbol?.toUpperCase()}</h1>
-                <p className='text-gray-600'>{coin.id?.toUpperCase()}</p>
-                </div>
-              </div>
-              <div className='flex items-center'>
-                <div className='bg-violet-700 text-white font-bold px-[15px] py-[7px] rounded-[7px] text-[15px]'>Rank # {coin.market_cap_rank}</div>
-              </div>
-            </div>
+            <EachCoinPriceShow price={price} header={header}/>
 
-            <div className="w-full flex justify-center py-[40px]">
+           <EachCoinInfo leftCard={leftCard} rightCard={rightCard}/>
 
-              <div className='w-[60%] flex flex-col items-center bg-[#28353E] shadow-sm rounded-[6px] overflow-hidden '>
+           <ExchangeForm text={text} selectCurrency={selectCurrency} handleChange={handleChange} setIsDollar={setIsDollar} isDollar={isDollar} result={result} />
 
-              <PriceShow check={false} data={header}/>
-     
-               <PriceShow check={true} data={price}/>
 
-              </div>
+           <Description text={coin?.description?.en} />
 
-            </div>
 
-            <div className='w-full flex justify-center'>
-              <div className='w-[60%] flex items-center justify-between shadow-sm'>
-                <InfoCard data={leftCard} check={false}/>
-                <InfoCard data={rightCard} check={true}/>
-              </div>
-            </div>
-
-            <div className='w-full flex justify-center py-[60px]'>
-              <div className='w-[60%] flex flex-col items-center justify-between shadow-sm '>
-                <h1 className='w-full font-bold text-[20px] text-center pb-[20px]'>{text}</h1>
-                <div className="w-full pb-[20px]">
-                <select onChange={selectCurrency} className='bg-[#28353E] w-full py-[20px] px-[15px] text-[13px] rounded-[6px] outline-none'>
-                    <option value="usd">USD</option>
-                    <option value="mmk">MMK</option>
-                  </select>
-                </div>
-                <div className="w-full flex justify-between">
-                <form className='w-[45%]'>
-                  <p className='text-[15px] pb-[6px] text-green-500'>Your Amount</p>
-                  <input onChange={handleChange} type="number" className='bg-[#28353E] w-full px-[15px] py-[10px] text-[13px] rounded-[6px] outline-none' placeholder='Enter amount'/>
-                </form>
-                <div className='w-[10%] flex h-full items-center justify-center'>
-                  <BiTransferAlt className='text-[20px] cursor-pointer' onClick={() => setIsDollar(!(isDollar))}/>
-                </div>
-                <div className='w-[45%]'>
-                <p className='text-[15px] pb-[6px] text-red-500'>To Amount</p>
-                  <div className='bg-[#28353E] w-full px-[15px] py-[10px] text-[13px] rounded-[6px] outline-none'>
-                    {result}
-                    </div>
-                </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="w-full flex justify-center">
-              <div className='w-[60%]'>
-              <h1 className='text-[25px] font-bold text-red-500'>Description</h1>
-              <p>{coin?.description?.en}</p>
-              </div>
-            </div>
-
-        </div>
       </div>
+
+    </div>
 
     </div>
     }
