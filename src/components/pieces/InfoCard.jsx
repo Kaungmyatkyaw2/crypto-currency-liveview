@@ -2,7 +2,7 @@ import React from 'react'
 
 const InfoCard = ({data,check}) => {
   return (
-            <div className='w-[45%] bg-[#28353E] rounded-[6px] py-[30px] px-[20px] space-y-[20px]'>
+            <div className='sm:w-[45%] w-full bg-[#28353E] rounded-[6px] py-[30px] px-[20px] space-y-[20px]'>
                   
                   {
                         data.map((i,index) => {

@@ -108,7 +108,7 @@ const EachCoin = () => {
 
       <Link to='/' className='px-[15px] mb-[20px] py-[10px] bg-[#1B2730] shadow-xl flex justify-center w-fit rounded-[6px]'>Back Home</Link>
 
-      <div className='w-[80%] bg-[#1B2730] rounded-[6px] px-[20px] py-[40px] text-white'>
+      <div className='md:w-[80%] w-full bg-[#1B2730] rounded-[6px] px-[20px] py-[40px] text-white'>
 
             <EachCoinHeader img={coin?.image?.large} name={coin?.id} symbol={coin?.symbol} rank={coin.market_cap_rank} />
 

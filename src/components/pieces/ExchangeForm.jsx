@@ -3,7 +3,7 @@ import {BiTransferAlt} from 'react-icons/bi'
 const ExchangeForm = ({text,selectCurrency,handleChange,setIsDollar,isDollar,result}) => {
   return (
     <div className='w-full flex justify-center py-[60px]'>
-    <div className='w-[60%] flex flex-col items-center justify-between shadow-sm '>
+    <div className='md:w-[60%] w-full flex flex-col items-center justify-between shadow-sm '>
       <h1 className='w-full font-bold text-[20px] text-center pb-[20px]'>{text}</h1>
       <div className="w-full pb-[20px]">
       <select onChange={selectCurrency} className='bg-[#28353E] w-full py-[20px] px-[15px] text-[13px] rounded-[6px] outline-none'>

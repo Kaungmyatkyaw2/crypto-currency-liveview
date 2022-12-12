@@ -46,7 +46,7 @@ const CoinCard = () => {
 
         <div className='md:w-[80%] w-[98%] bg-[#1B2730] rounded-[6px] px-[20px] pt-[50px] text-white'>
 
-            <input className='w-[80%] bg-[#28353E] text-[13px] ml-[7%] px-[20px] py-[10px] rounded-[5px] outline-none' placeholder='Search Currency' type="text" onChange={handleSearch} />
+            <input className='md:w-[80%] w-full bg-[#28353E] text-[13px] md:ml-[7%] px-[20px] py-[10px] rounded-[5px] outline-none' placeholder='Search Currency' type="text" onChange={handleSearch} />
 
             <HeaderRow/>
 
